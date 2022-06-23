@@ -1,0 +1,47 @@
+@import "../../App.scss";
+.home {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  img {
+    object-fit: contain;
+    align-self: center;
+    width:60%;
+    margin-top: 2rem;
+  }
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+
+  }
+  .light {
+    height: 60vh;
+    width: 100vw;
+    background-color: rgba(254, 250, 224, 0.26);
+    position: absolute;
+    top: -10rem;
+    left: -15vw;
+    border-radius: 50%;
+  }
+  @include tablet {
+
+    img {
+      width: 100%;
+    }
+    p {
+      font-size: 1rem;
+      margin-top: 3rem;
+    }
+    .light {
+      height: 80vh;
+      width: 75vw;
+      top: -15rem;
+      left: -9vw;
+    }
+  }
+  @include desktop {
+  }
+}

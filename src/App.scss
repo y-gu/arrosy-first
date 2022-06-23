@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
+
+//Mixins for responsive design
+$phone-width: 576px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+
+@mixin tablet {
+  @media (min-width: #{$phone-width}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+//Color scheme
+$main-green: #4d7477;
+$main-yellow: #fefae0;
+$transparent-grey: rgba(196, 196, 196, 0.65);
+
+.App {
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 95vw;
+
+  .page{
+    display: flex;
+    justify-content: center;
+  }
+
+  @include tablet {
+
+
+    width: 84vw;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @include desktop {
+  
+  }
+}

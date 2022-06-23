@@ -1,0 +1,123 @@
+@import "../../App.scss";
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.9rem;
+  a {
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+
+    li {
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+
+
+  .logo {
+    z-index: 98;
+    position: absolute;
+    height: 3.5rem;
+    left: 1rem;
+    top: 1rem;
+  }
+
+  .navIcon {
+    height: 2rem;
+    width: 2rem;
+    svg {
+      color: white;
+    }
+  }
+
+  .iconBars {
+    border-radius: 50%;
+    background: $main-green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @keyframes slidein {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  .dropMenu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    background-color: $main-green;
+    z-index: 99;
+    color: white;
+    animation: 500ms linear slidein;
+    .iconClose{
+      position:absolute;
+      top: 2rem;
+      right: 1rem;
+    }
+    ul {
+      top: 2rem;
+      height: 50%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      justify-content: space-around;
+      align-items: center;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+  @include tablet {
+    .nav {
+    margin-top: 3rem;
+      .logo{
+        height:5.8rem;
+        top: .5rem;
+        left:8vw;
+      }
+      .menu {
+        width: 58vw;
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: 1px solid $main-green;
+      
+        ul {
+          display: flex;
+          align-items: flex-end;
+        
+          li {
+           margin-left: 1.9rem;
+           padding-bottom: 1rem ; 
+
+            a {
+           
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    
+  }
+  @include desktop {
+    .nav{
+      margin-top: 4rem;
+    .logo {
+      top:1.5rem;
+    }
+  }
+  }
+}
