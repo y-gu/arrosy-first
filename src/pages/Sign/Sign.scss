@@ -3,14 +3,113 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .enter {
-    background: $transparent-grey;
-    color: white;
-    margin: 1rem auto;
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    width:70%;
+    margin-top: .5rem;
+    label{
+        margin-bottom: .2rem;
+    }
+    input{
+        padding: 0.5rem 0.2rem;
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #d2d2d2;
+            opacity: 1; /* Firefox */
+            text-transform: capitalize;
+          }
+          
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #d2d2d2;
+            text-transform: capitalize;
+          }
+          
+        &::-ms-input-placeholder { /* Microsoft Edge */
+            color: #d2d2d2;
+            text-transform: capitalize;
+          }
+    }
+}
+.stdBtn{
+  border: none;
+  padding: 0.6rem 0.2rem;
+  border-radius: .1rem;
+  width:70%;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+
+&.clear{
+  color: $main-green;
+  background-color: $main-yellow;
+
+}
+&.dark{
+  color:white;
+  background-color: $main-green;
+}
+}
+.validation{
+  color:rgb(110, 10, 10);
+  padding-top: .5rem ;
+  margin: 0 1.8rem;
+  text-align: center;
+}
+  .signIn{
+  .form-group{
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .iconSign{
+      padding: .2rem;
+      color: $main-green;
+    }
+    input{
+      width: 100%;
+      border:none;
+      outline: none;
+      padding-left: .2rem;
+    }
   }
-  h3 {
+}
+
+.signUp{ 
+  position: relative;
+
+    .back{
+      position: absolute;
+      top:1rem;
+      left:1rem;
+      color: $main-green;
+    }
+
+}
+.signIn-signUp{
+  .hide{
+      display: none;
+  }
+  .show{
+    display:block;
+  }
+}
+  
+  
+
+  .stain-container .stain{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+     img{
+    object-fit: contain;
+    height: 100%;
+    width:100%;
+  }
+  }
+
+  h3{
     text-align: center;
-    padding: 1.3rem;
+    padding: 1.1rem;
     align-self: center;
     text-transform: uppercase;
     font-weight: 600;
@@ -53,16 +152,29 @@
     @include tablet {
      
       .signing{
+
+        .stain-container .stain{
+            height:90%;
+            bottom: -15vh;
+            left: 5vh;
+        }
          .signIn-signUp{
-          flex-direction: row;
-          justify-content: space-between;
-           align-items: flex-start;
+
            .box{
-            width: 33vw;
+            width: 40vw;
            }
          }
       }
     }
     @include desktop {
+      .signing{
 
+        .signIn-signUp{
+          justify-content: space-around;
+          .box{
+            width: 30vw;
+         }
+         }
+
+      }
     }

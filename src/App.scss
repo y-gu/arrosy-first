@@ -29,20 +29,25 @@ $transparent-grey: rgba(196, 196, 196, 0.65);
   justify-content: space-between;
   width: 95vw;
 
+
   .page{
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
   }
 
   @include tablet {
 
-
+    
     width: 84vw;
     margin: 0 auto;
     font-family: "Raleway", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+
+
   }
   @include desktop {
   

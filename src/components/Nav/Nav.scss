@@ -35,7 +35,7 @@
     }
   }
 
-  .iconBars {
+  .iconRound {
     border-radius: 50%;
     background: $main-green;
     display: flex;
@@ -97,11 +97,12 @@
       
         ul {
           display: flex;
-          align-items: flex-end;
+          align-items: center;
         
           li {
            margin-left: 1.9rem;
            padding-bottom: 1rem ; 
+ 
 
             a {
            

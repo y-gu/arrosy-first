@@ -1,15 +1,16 @@
 import React from 'react';
-import './HomeFirst.scss';
+import './Home.scss';
 import homepage from '../../assets/homepage.png';
 import homepageMobile from '../../assets/homepage-mobile.png';
 import useMobile from '../../hooks/useMobile';
 
 
-export default function HomeFirst() {
+export default function Home() {
   const mobile = useMobile();
-  let image = mobile? homepageMobile : homepage
+  let image = mobile? homepageMobile : homepage;
+
   return (
-  
+
     <div className='page home'>
       <div className='light'></div>
       <img src={image} alt={'homepage'} />
@@ -17,3 +18,4 @@ export default function HomeFirst() {
     </div>
   )
 }
+

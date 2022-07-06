@@ -7,7 +7,19 @@ body {
   background: url('./assets/geometric-leaves.webp');
   background-size: 160px 160px;
   font-family: 'Raleway', sans-serif;
+  position: relative;
+  /* border: 1px solid blue; */
 }
+.stain-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;;
+  z-index: -1;
+  bottom:0;
+  left:0; 
+  overflow: hidden;
+}
+
 
 body:after {
   content: "";
