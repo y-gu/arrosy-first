@@ -1,8 +1,6 @@
 @import "../../App.scss";
 .signing {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   .form-group{
     display: flex;
     flex-direction: column;
@@ -31,23 +29,9 @@
     }
 }
 .stdBtn{
-  border: none;
-  padding: 0.6rem 0.2rem;
-  border-radius: .1rem;
-  width:70%;
   margin-top: 1.5rem;
-  font-size: 1rem;
+}
 
-&.clear{
-  color: $main-green;
-  background-color: $main-yellow;
-
-}
-&.dark{
-  color:white;
-  background-color: $main-green;
-}
-}
 .validation{
   color:rgb(110, 10, 10);
   padding-top: .5rem ;

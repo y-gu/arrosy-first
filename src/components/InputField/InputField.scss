@@ -1,27 +1,27 @@
-.form-group{
-    display: flex;
-    flex-direction: column;
-    width:70%;
-    margin-top: .5rem;
-    label{
-        margin-bottom: .2rem;
-    }
-    input{
-        padding: 0.5rem 0.2rem;
-        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: #d2d2d2;
-            opacity: 1; /* Firefox */
-            text-transform: capitalize;
-          }
+// .form-group{
+//     display: flex;
+//     flex-direction: column;
+//     width:70%;
+//     margin-top: .5rem;
+//     label{
+//         margin-bottom: .2rem;
+//     }
+//     input{
+//         padding: 0.5rem 0.2rem;
+//         &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+//             color: #d2d2d2;
+//             opacity: 1; /* Firefox */
+//             text-transform: capitalize;
+//           }
           
-        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: #d2d2d2;
-            text-transform: capitalize;
-          }
+//         &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+//             color: #d2d2d2;
+//             text-transform: capitalize;
+//           }
           
-        &::-ms-input-placeholder { /* Microsoft Edge */
-            color: #d2d2d2;
-            text-transform: capitalize;
-          }
-    }
-}
+//         &::-ms-input-placeholder { /* Microsoft Edge */
+//             color: #d2d2d2;
+//             text-transform: capitalize;
+//           }
+//     }
+// }

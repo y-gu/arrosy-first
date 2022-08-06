@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Home.scss';
 import homepage from '../../assets/homepage.png';
 import homepageMobile from '../../assets/homepage-mobile.png';
@@ -8,7 +8,7 @@ import useMobile from '../../hooks/useMobile';
 export default function Home() {
   const mobile = useMobile();
   let image = mobile? homepageMobile : homepage;
-
+ 
   return (
 
     <div className='page home'>

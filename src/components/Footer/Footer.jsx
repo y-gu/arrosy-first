@@ -2,7 +2,10 @@ import React from 'react';
 import './Footer.scss'
 
 export default function Footer() {
+  const date = new Date()
+  const currentYear = date.getFullYear()
+
   return (
-    <footer>Copyright © 2022 Yulia Gulimova</footer>
+    <footer>Copyright © {currentYear } Yulia Gulimova</footer>
   )
 }

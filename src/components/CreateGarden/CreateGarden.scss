@@ -1,0 +1,94 @@
+@import "../../App.scss";
+
+// form (form-collection)
+
+//--contour
+//----form-group
+//------label
+//------input
+//----form-group
+//------label
+//------categorie-container
+//--------icon-container
+//----------iconRound
+//------------input
+//------------input
+
+//--btn
+
+.form-collection {
+  background: $mustard;
+  //height: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .contour {
+    width: 80%;
+    min-height: 45vh;
+    margin-top: 1rem;
+    padding: 1rem .8rem 0 .8rem;
+    border: 1px solid $main-green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    color: $main-green;
+    font-weight: 600;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label{
+        text-align: center;
+      }
+      input{
+        border: none;
+      }        
+      .icon-container{
+            display: flex;
+            justify-content: space-around;
+            
+
+          }
+      .category-container{
+        margin: 1rem 0;
+        display: grid;
+        gap: .5rem;
+        max-width: 100%;
+
+
+      }
+    }
+  }
+  .stdBtn{
+    margin: 1rem;
+  }
+}
+@include tablet {
+    .form-collection {
+        min-height: 40vh;
+        .contour{
+            width: 90%;
+            min-height:30vh;
+            font-size: 1.2rem;
+            .form-group{
+                margin:1rem;
+                .icon-container{
+                    width:50%;
+                }
+            }
+          .category-container{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        .stdBtn{
+
+            margin: 1rem 2.7rem;
+            width: 30%;
+            align-self: flex-end;
+        }
+    }
+  }

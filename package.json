@@ -3,18 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "firebase": "^9.8.3",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@swc/core": "^1.2.223",
+    "@swc/wasm": "^1.2.223",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.4.2",
+    "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "esbuild": "^0.14.53",
+    "firebase": "^9.9.2",
+    "module": "^1.2.5",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "^5.0.0",
+    "stream-browserify": "^3.0.0",
+    "web-vitals": "^2.1.4",
+    "worker-thread": "^1.1.0",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,9 +54,15 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.1",
-    "sass": "^1.52.1",
-    "sass-loader": "^13.0.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.72.1"
-  }
+    "sass": "^1.54.3",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/y-gu/arrosy-first.git",
+  "author": "Yulia Gulimova <gulimovayulia@gmail.com>",
+  "license": "MIT"
 }

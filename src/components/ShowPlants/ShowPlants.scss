@@ -1,0 +1,75 @@
+@import "../../App.scss";
+
+    .plant-collection{
+        background-color: rgba(254, 250, 224, 1);
+        padding: 3rem .4rem 1.5rem;
+        display: grid;
+        gap: .5rem;
+        grid-template-columns: 1fr 1fr ;
+        margin-bottom: 2rem;
+        position: relative;
+    .category-title{
+        position: absolute;
+        color:rgba(77, 116, 119, 0.37);
+        text-transform: capitalize;
+        transform: translateY(-50%);
+        
+    }
+    .iconRound{
+        position: absolute;
+        right:.5rem;
+        top:.5rem;
+        background-color: $mustard;
+    }
+    
+    .card{
+        text-decoration: none;
+        height: 11rem;
+        background: white;
+        box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+        .window{
+           height:40%;
+           width:80%;
+           margin: 10% auto;
+           background:$transparent-green; 
+           position: relative;
+           .pot, .plant{
+            position: absolute;
+            left:50%;           
+            transform: translateX(-50%);
+           }
+           .pot{
+            height: 70%;
+            bottom: -25%;
+           }
+           .plant{
+            height: 100%;
+            top: -25%;
+           }
+        }
+        .title{
+            color: $main-green;
+            margin-top: 2rem;
+            padding-left: 10%;
+            font-weight: 700;
+            text-transform: capitalize;
+
+        }
+    }
+}
+@include tablet {
+    .plant-collection{
+        padding: 2rem 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 4rem;
+        font-size: 1rem;
+        .category-title{
+            font-size: 3rem;
+        }
+    .card{
+        height: 15rem;
+        margin-top: 2rem;
+   } 
+}
+}

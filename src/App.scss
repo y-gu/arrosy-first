@@ -18,8 +18,11 @@ $desktop-width: 992px;
 
 //Color scheme
 $main-green: #4d7477;
+$transparent-green: rgba(77, 116, 119, 0.12);
 $main-yellow: #fefae0;
-$transparent-grey: rgba(196, 196, 196, 0.65);
+$transparent-grey: rgba(196, 196, 196, 1);
+$grey: rgba(0,0,0,0.58);
+$mustard: #E2D698;
 
 .App {
   height: 100vh;
@@ -31,11 +34,48 @@ $transparent-grey: rgba(196, 196, 196, 0.65);
 
 
   .page{
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+  }
+  input{
+    height: 2rem;
+  }       
+  .iconRound {
+    border-radius: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background: $main-green;
+    color: white;
   }
 
+  .iconClose, .iconRound{
+    height: 2rem;
+    width: 2rem;
+    svg {
+      color: white;
+    }
+  }
+  .stdBtn{
+    border: none;
+    padding: 0.6rem 0.2rem;
+    border-radius: .1rem;
+    width:70%;
+    font-size: 1rem;
+  
+  &.clear{
+    color: $main-green;
+    background-color: $main-yellow;
+  
+  }
+  &.dark{
+    color:white;
+    background-color: $main-green;
+  }
+  }
   @include tablet {
 
     
@@ -45,7 +85,10 @@ $transparent-grey: rgba(196, 196, 196, 0.65);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    .page{
+      width:100%;
+      min-height: 65vh;
+    }
 
 
   }

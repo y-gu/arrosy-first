@@ -7,7 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { allUsers } from "../firebase/config";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp} from "firebase/firestore";
 
 export const AuthContext = createContext();
 
@@ -24,17 +24,17 @@ export function AuthContextProvider(props) {
       //add user to database
       const user = userCredential.user;
       const docRef = doc(allUsers, user.uid);
-      await setDoc(docRef, { name: name, email: email });
+      await setDoc(docRef, { userName: name, email: email, timestamp: serverTimestamp()});
     
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        message = "The email address is already in use";
+        message = "Cet émail est déjà utilisé";
       } else if (error.code === "auth/invalid-email") {
-        message = "The email address is not valid.";
+        message = "Le format de cet adresse émail n'est pas valide";
       } else if (error.code === "auth/operation-not-allowed") {
-        message = "Operation not allowed.";
+        message = "L'operation n'est pas autorisé";
       } else if (error.code === "auth/weak-password") {
-        message = "The password is too weak.";
+        message = "Le mode passe doit contenir au moins 6 caractères";
       }
     }
 
@@ -61,7 +61,7 @@ export function AuthContextProvider(props) {
     return unsubscribe;
   }, []);
 
-  console.log(loadingData);
+
 
   return (
     <AuthContext.Provider value={{ currentUser, signUp, signIn, logOut }}>
