@@ -19,7 +19,10 @@ const app = initializeApp(firebaseConfig);
 export  const storage = getStorage(app);
 // DB
 export const firestore = getFirestore();
+
 export const allUsers = collection(firestore, "users");
+export const allPlantTypes = collection(firestore, "plants");
+
 export const auth = getAuth(app);
 
 

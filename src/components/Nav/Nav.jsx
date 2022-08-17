@@ -41,7 +41,7 @@ export default function Nav() {
           {dropMenu ? (
             <div className="dropMenu ">
               <FontAwesomeIcon
-                className="iconClose"
+                className="iconCloseDrop"
                 icon={faXmark}
                 onClick={handleToggle}
               />
@@ -59,22 +59,27 @@ export default function Nav() {
                   </li>
                 )}
                 {currentUser && (
+                  <>
+                  <li>  <Link to="/user/garden" onClick={handleToggle}>Jardin</Link></li>
+                  <li> <Link to="user/profile" onClick={handleToggle}>Profil</Link></li>
+                  
                   <li>
                     <p onClick={logOutMobile}>LOGOUT</p>
                   </li>
+                  </>
                 )}
               </ul>
             </div>
           ) : (
             <div>
               {currentUser ? (
-                <div className="iconRound" onClick={handleToggle}>
+                <div className="iconRoundGreen" onClick={handleToggle}>
                   <FontAwesomeIcon icon={faBars} />
                 </div>
               ) : (
                 <div>
                   {" "}
-                  <Link to="/signing" className="iconRound">
+                  <Link to="/signing" className="iconRoundGreen">
                     <FontAwesomeIcon icon={faArrowRightToBracket} />
                   </Link>
                 </div>
@@ -93,7 +98,7 @@ export default function Nav() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="signing" className="navIcon iconRound">
+                  <NavLink to="signing" className="navIcon iconRoundGreen">
                     <FontAwesomeIcon icon={faArrowRightToBracket} />
                   </NavLink>
                 </li>
@@ -111,7 +116,7 @@ export default function Nav() {
                   <NavLink to="user/profile">Profil</NavLink>
                 </li>
                 <li>
-                  <div className="navIcon iconRound" onClick={logOut}>
+                  <div className="navIcon iconRoundGreen" onClick={logOut}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket} />
                   </div>
                 </li>

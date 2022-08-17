@@ -27,16 +27,16 @@ export default function ShowPlants({ handleOpenModal }) {
 
 
             <div className='plant-collection' key={i}>
-              <div className="iconRound" onClick={handleOpenModal} data-category={cat}>
+              <div className="iconRoundMustard" onClick={handleOpenModal} data-category={cat}>
                 +
                 <FontAwesomeIcon icon={faSeedling}/>
               </div>
               <h1 className='category-title'>{cat}</h1>
               {plantsByCat.map((plant) =>
 
-                <Link to="/not-active" className='card' key={plant.id}>
+                <Link to={`/user/garden/plant/`+ plant.id} className="card "  key={plant.id}>
                   <div className="window">
-                    <img src={plant1} alt="" className='plant' />
+                    <img src={plant.imgUrl} alt="" className='plant' />
                     <img src={pot1} alt="" className='pot' />
                   </div>
                   <p className='title'>{plant.name}</p>
@@ -52,20 +52,21 @@ export default function ShowPlants({ handleOpenModal }) {
         (
           //// display if No categories
           <div className="plant-collection">
-             <div className="iconRound" onClick={handleOpenModal}>
+             <div className="iconRoundMustard" onClick={handleOpenModal} data-category='general'>
                 +
                 <FontAwesomeIcon icon={faSeedling} />
               </div>
             {plants.map((plant) => {
               return (
 
-                <div className='card' key={plant.id}>
+                <Link to={`/user/garden/plant/`+ plant.id} className="card "  key={plant.id}>
 
                   <div className="window">
-                    <img src={pot1} alt="" />
+                    <img src={plant.imgUrl} alt="" className='plant' />
+                    <img src={pot1} alt="" className='pot' />
                   </div>
                   <p className='title'>{plant.name}</p>
-                </div>
+                </Link>
               )
             })}
           </div>

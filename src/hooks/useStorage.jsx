@@ -1,12 +1,13 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { storage } from '../firebase/config'
 import { ref, getDownloadURL } from "firebase/storage";
 
 
-const useStorage = (fileName) => {
+const useStorage = (collectionName, fileName) => {
     const [imgUrl, setImgUrl]= useState();
-    let storageRef = ref(storage, `plants/${fileName}.png`);
-   
+    let storageRef = ref(storage, `${collectionName}/${fileName}.png`);
+
+    useEffect(()=>{
     getDownloadURL(storageRef)
     .then((url) => {
       setImgUrl(url)
@@ -14,7 +15,10 @@ const useStorage = (fileName) => {
     .catch((error) => {
      console.log(error)
     });
+  },[fileName])
+
     return imgUrl;
 }
 
 export default useStorage;
+

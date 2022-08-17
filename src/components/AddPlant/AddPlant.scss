@@ -32,30 +32,21 @@
     //   background:rgba(77, 116, 119, .1) ;
     // }
     .form-add{
-      height: 50vh;
-      margin-top: 10%;
+      height: 60vh;
       width: 92%;
       z-index: 3;
       background-color: $mustard;
-      margin: 20vh auto;
+      margin: 4.5vh auto;
       position:relative;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
       border-radius: 5px;
-      // .modal-title{
-      //   position: absolute;
-      //   top:-22%;
-      //   background-color: white;
-      //   font-size: 1.3rem;
-      //   color: $main-green;
-      //   padding: 0.4em;
-      //   font-weight: bold;
-      // }
+
       .iconClose{
+        @include  roundBtn($mustard, $main-green);
         position: absolute;
-        color:$main-green;
         right:.5rem;
         top:.5rem;
       }
@@ -63,16 +54,43 @@
         color:$main-green;
       }
       .contour{
-        height: 60%;
-        width:90%;
-        margin-top: 1.5rem;
-        border:1px solid white;
-        color: $main-green;
         padding: 1rem;
-        .form-group{
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+
+        .basic-info{
+          .form-group{
+            grid-template-columns: 1fr 1fr;
+          }
         }
+        .watering{
+         .form-group{
+          //  grid-template-columns: 9fr 2fr 2fr; 
+          grid-template-columns: 3fr 1fr 1fr;
+           align-items: center;
+          }
+          .add-subtitle{
+            text-align: center;
+            padding: .7rem;
+          }
+        }
+        .form-group{
+          color:$main-green;
+          display: grid;
+          
+          padding-bottom: .5rem;
+        label{
+          display: flex;
+          align-items: center;
+          padding-left:.4rem;
+        }
+        input{
+          padding: .2rem;
+        }
+       select, input{
+          min-width:3rem;
+          border: none;
+        }
+        }
+
       }
       .stdBtn{
           width: 50%;
@@ -85,9 +103,15 @@
   width: 100vw;
   left:-8vw;
   .form-add{
-    height: 50vh;
+    height: 70vh;
     width:70%;
     margin-top: 20%;
+    .contour{
+      padding: 1rem;
+      width:90%;
+      border:1px solid white;
+      color: $main-green;
+    }
   }
    }
 }

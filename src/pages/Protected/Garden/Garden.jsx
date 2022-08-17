@@ -21,6 +21,7 @@ function Garden() {
   const handleOpenModal = (e) => {
     setModal(true);
     setClickedCat(e.currentTarget.getAttribute('data-category'))
+    console.log(clickedCat)
   }
 
 

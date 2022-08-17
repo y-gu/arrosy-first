@@ -15,14 +15,27 @@ $desktop-width: 992px;
     @content;
   }
 }
-
+//mixins btns
+@mixin roundBtn($main-color:$main-green, $svg-color: white){
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $main-color;
+  color: $svg-color;
+  height: 2rem;
+  width: 2rem;
+  svg {
+    color: $svg-color;
+  }
+}
 //Color scheme
 $main-green: #4d7477;
 $transparent-green: rgba(77, 116, 119, 0.12);
 $main-yellow: #fefae0;
-$transparent-grey: rgba(196, 196, 196, 1);
-$grey: rgba(0,0,0,0.58);
+$grey: rgba(196, 196, 196, 1);
 $mustard: #E2D698;
+$red: #832F2F;
 
 .App {
   height: 100vh;
@@ -40,25 +53,22 @@ $mustard: #E2D698;
     margin: 0 auto;
     position: relative;
   }
-  input{
+  input, select{
     height: 2rem;
+   
   }       
-  .iconRound {
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $main-green;
-    color: white;
+  .iconRoundGreen {
+    @include  roundBtn();
+  }
+  .iconRoundMustard
+  {
+    @include roundBtn($mustard);
+    position: absolute;
+    right:.5rem;
+    top:.5rem;
   }
 
-  .iconClose, .iconRound{
-    height: 2rem;
-    width: 2rem;
-    svg {
-      color: white;
-    }
-  }
+
   .stdBtn{
     border: none;
     padding: 0.6rem 0.2rem;

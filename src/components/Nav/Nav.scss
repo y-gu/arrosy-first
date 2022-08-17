@@ -58,10 +58,12 @@
     z-index: 99;
     color: white;
     animation: 500ms linear slidein;
-    .iconClose{
+    .iconCloseDrop{
+       @include roundBtn();
       position:absolute;
       top: 2rem;
       right: 1rem;
+
     }
     ul {
       top: 2rem;
