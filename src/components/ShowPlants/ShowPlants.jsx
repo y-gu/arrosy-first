@@ -7,10 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSeedling } from "@fortawesome/free-solid-svg-icons";
 import pot1 from '../../assets/pot1.png';
 import plant1 from '../../assets/plant1.png';
+import useShowAll from '../../hooks/useShowAll';
 
 export default function ShowPlants({ handleOpenModal }) {
 
-  const plants = useShowPlants();
+  //const plants = useShowPlants();
+  const plants = useShowAll('gardenCollection')
   const { categories } = useUserInfo();
 
 
@@ -63,7 +65,7 @@ export default function ShowPlants({ handleOpenModal }) {
 
                   <div className="window">
                     <img src={plant.imgUrl} alt="" className='plant' />
-                    <img src={pot1} alt="" className='pot' />
+                    <img src={plant.potUrl} alt="" className='pot' />
                   </div>
                   <p className='title'>{plant.name}</p>
                 </Link>

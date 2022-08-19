@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import useGetOne from '../../../hooks/useGetOne';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faDroplet, faPen } from "@fortawesome/free-solid-svg-icons";
 import './Plant.scss';
 import { updateDoc, arrayUnion} from "firebase/firestore";
+import useMobile from '../../../hooks/useMobile';
 
 
 function Plant() {
@@ -12,23 +13,32 @@ function Plant() {
   const {item: plant, itemRef: plantRef} = useGetOne('gardenCollection', id)
   const [waterIn, setWaterIn] = useState();
   const [late, setLate] = useState(0);
+  const [watered, setWatered] = useState();
   const today = Math.round(Date.now() / 1000);
   //const numberOfDays = Math.round((( plant.whenToWater||today+1) - today) / 86400)
   const whenToWater = plant.lastWatered + plant.frequency * 86400
   const  numberOfDays = Math.round((( whenToWater||today+1) - today) / 86400)
+  const lastWateredWholeDate = new Date(plant.lastWatered* 1000)
+  const lastWateredDay = lastWateredWholeDate.getDate();
+  const lastWateredMonth =  lastWateredWholeDate.getMonth()+1;
+  const lastWateredShortDate = lastWateredDay+ '/'+lastWateredMonth
+  const mobile = useMobile();
 
+  const [truncate, setTruncate] = useState('truncate');
 
   useEffect(() => {
     setWaterIn(numberOfDays)
     setLate(Math.abs(numberOfDays));
+    (today - plant.lastWatered) <= 43200 ? setDisabled(true) : setDisabled(false);
+    setWatered(lastWateredShortDate);
   }, [plant])
 
-
+  const [isDisabled, setDisabled] = useState(false);
+  
+  const handleClickOnDescription =(e)=>{
+    setTruncate(prev =>(prev=="whole"?"truncate":"whole" ))
+  }
   const handleWatering = async(e) => {
-    console.log(e.target)
-    console.log(new Date(plant.lastWatered*1000))
-    console.log(new Date(plant.whenToWater*1000))
-    console.log(plant.waterAllDates)
     await updateDoc(plantRef, {
       lastWatered: today,
       waterAllDates: arrayUnion(plant.lastWatered)
@@ -53,7 +63,7 @@ function Plant() {
         </div>
 
         <div className="water-info">
-          <button className="water-btn" onClick={handleWatering}>
+          <button className="water-btn" disabled={isDisabled} onClick={handleWatering}>
             <FontAwesomeIcon icon={faDroplet} className="drop big-drop" />
             <FontAwesomeIcon icon={faDroplet} className="drop small-drop" />
           </button>
@@ -93,8 +103,8 @@ function Plant() {
         </div>
 
       </div>
-      <div className="decription">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio ....
+      <div className={`decription ${truncate}`} onClick={handleClickOnDescription}>
+        {plant.description}
       </div>
       <div className="bottom">
         <div className="framed-section">
@@ -109,10 +119,16 @@ function Plant() {
           </div>
           <div className="group">
             <div className="parameter"> Dernier arrosage</div>
-            <div className="grey-window"></div>
+            <div className="grey-window">{watered}</div>
           </div>
         </div>
-        <div className="modify"></div>
+        <div className="modify">
+          <button className='stdBtn'>
+          <FontAwesomeIcon icon={faPen} className="drop big-drop" />
+          {mobile && <span>  Modifier</span>}
+          
+            </button>
+        </div>
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ import Sign from './pages/Sign/Sign';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import { Routes, Route, Navigate} from 'react-router-dom';
+import {auth} from './firebase/config'
 import Protected from './pages/Protected/Protected';
 import Dashboard from './pages/Protected/Dashboard/Dashboard';
 import Garden from './pages/Protected/Garden/Garden';
@@ -18,9 +19,8 @@ function App() {
     <div className="App">
       <Nav />
       <Routes>  
-      {/* <Route path='/' element={auth.currentUser ? <Navigate to='/user/dashboard' replace/> : <Home />} />
-         */}
-         <Route path='/' element={<Home/>} />
+        
+        <Route path='/' element={<Home/>} />
         
         <Route path='/signing' element={<Sign />} />
         <Route path='/user' element={<Protected />}>

@@ -1,0 +1,21 @@
+@import "../../../App.scss";
+.dashboard {
+    .title{
+        color: $main-green;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    .thirsty{
+        background-color: $transparent-red;
+    }
+    .ready{
+        background-color: $transparent-green;
+    }
+    .next{
+        background-color: $transparent-yellow;
+    }
+    .done{
+        background-color: $main-green;
+    }
+
+}

@@ -1,27 +1,55 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
-import useStorage from '../../../hooks/useStorage';
-import useStorageCollection from '../../../hooks/useStorageCollection';
-import { storage } from '../../../firebase/config'
-import { ref, getDownloadURL } from "firebase/storage";
+import './Dashboard.scss'
+
+import { getPlantsSortedByLastWater } from '../../../utils';
 
 export default function Dashboard() {
 
-  const url = useStorage( 'plants', 'monstera');
-console.log(url)
-  const pots= useStorageCollection('pots')
-  
-  console.log(pots)
+
+  const [sortedGroups, setSortedGroups] = useState()
+  const [loading, setLoading] =useState('first')
+  useEffect(()=>{
+    setLoading(true)
+    const fetchSortedPlants = async()=>{
+    const plants = await getPlantsSortedByLastWater();
+    setSortedGroups(plants)
+    setLoading(false)
+  }
+  fetchSortedPlants() 
+  },[])
+  console.log(sortedGroups)
+
   const { currentUser } = useContext(AuthContext);
   return (
-    <div> <p>SALUT{currentUser.uid}</p>
-      <div>Currently logged in as :{currentUser?.uid}</div>
-     <img src={url} alt="" />
-      {pots.map( (item)=>{
-        <img src={item} alt="" />
-      })}
+    <div className='dashboard'> 
 
+        {!loading && sortedGroups.map( (group, i)=>{
+        if(group.plants.length > 0 ){
+          return (<div key={i}>
+            <div>
+             <h2 className='title'>{group.name}</h2>
+            <div className={`${group.colorClass} plant-collection`}>
+                {
+                  group.plants.map((plant, i)=>{
+                    return(
+                      <div className="card">
+                        <div className="window">
+                    <img src={plant.imgUrl} alt="" className='plant' />
+                    <img src={plant.potUrl} alt="" className='pot' />
+                  </div>
+                  <p className='title'>{plant.name}</p>
+                      </div>
+                      )
+                  })
+                }
+            </div> 
+            </div>
+  
+          </div>)
+        }
+      })}  
     </div>
   )
 }

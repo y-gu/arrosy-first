@@ -31,7 +31,7 @@ export default function Nav() {
   };
   return (
     <div className="nav">
-      {/* <div style={{height:"4.5rem", width:"6rem", background:"#4d7477", position:"absolute", left:"5rem", top:"3rem", borderRadius:"60%"}}></div> */}
+   
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>

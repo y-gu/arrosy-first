@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
     .plant-collection{
-        background-color: rgba(254, 250, 224, 1);
+        background-color:$main-yellow;
         padding: 3rem .4rem 1.5rem;
         display: grid;
         gap: .5rem;
