@@ -1,55 +1,82 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
-import './Dashboard.scss'
-
+import './Dashboard.scss';
+import { Link } from "react-router-dom";
 import { getPlantsSortedByLastWater } from '../../../utils';
+import  watercan from "../../../assets/watercan.png"
+import { getOne } from '../../../utils';
+import { updateDoc, arrayUnion} from "firebase/firestore";
 
 export default function Dashboard() {
-
-
-  const [sortedGroups, setSortedGroups] = useState()
-  const [loading, setLoading] =useState('first')
-  useEffect(()=>{
-    setLoading(true)
-    const fetchSortedPlants = async()=>{
+  const [sortedGroups, setSortedGroups] = useState([])
+  const [loading, setLoading] = useState(false)
+  
+  const fetchSortedPlants = async () => {
     const plants = await getPlantsSortedByLastWater();
     setSortedGroups(plants)
-    setLoading(false)
   }
-  fetchSortedPlants() 
-  },[])
-  console.log(sortedGroups)
 
-  const { currentUser } = useContext(AuthContext);
+
+
+  useEffect(() => {
+    setLoading(true)
+    fetchSortedPlants()
+    setLoading(false)
+  }, [])
+
+  const handleWatering = async (e)=>{
+
+    const wateredPlant = await getOne(e.target.getAttribute('data-id'));
+    console.log(wateredPlant.data);
+    await updateDoc(wateredPlant.itemRef, {
+      lastWatered: today,
+      waterAllDates: arrayUnion(wateredPlant.data.lastWatered)
+  });
+  fetchSortedPlants()
+  
+  }
+
+  const { today } = useContext(AuthContext);
   return (
-    <div className='dashboard'> 
+    <div className='dashboard'>
 
-        {!loading && sortedGroups.map( (group, i)=>{
-        if(group.plants.length > 0 ){
-          return (<div key={i}>
-            <div>
-             <h2 className='title'>{group.name}</h2>
-            <div className={`${group.colorClass} plant-collection`}>
+      {!loading && sortedGroups ? sortedGroups.map((group, i) => {
+
+        if (group.plants.length > 0) {
+          return (
+          <div key={i} className="colorGroup">
+
+              <h2 className='title'>{group.name}</h2>
+              <div className={`${group.colorClass} plant-collection`}>
                 {
-                  group.plants.map((plant, i)=>{
-                    return(
-                      <div className="card">
+                  group.plants.map((plant, j) => {
+                    return (
+                      <div className="card" key={`${plant.name}-${j}`}>
                         <div className="window">
-                    <img src={plant.imgUrl} alt="" className='plant' />
-                    <img src={plant.potUrl} alt="" className='pot' />
-                  </div>
-                  <p className='title'>{plant.name}</p>
+                          <Link  to={`/user/garden/plant/`+ plant.id}>
+                           <img src={plant.imgUrl} alt="" className='plant' />
+                          <img src={plant.potUrl} alt="" className='pot' />
+                          </Link>
+                        
+                        </div>
+                        <p className='title'>{plant.name}</p>
+                        <div className='hallo'></div>
+                        <img src={watercan} alt="" className='watercan' data-id={plant.id} onClick={handleWatering}/>
                       </div>
-                      )
+                    )
                   })
                 }
-            </div> 
+              {group.colorClass==="done"&& 
+                <>
+                  <div className="bigBubble"></div>
+                  <div className="smallBubble"></div>    
+                </>}
             </div>
-  
+
           </div>)
         }
-      })}  
+
+      }): <div className='noInfo'><p>Pas d'arrosage à prévoir aujourd'hui et demain</p></div>}
     </div>
   )
 }

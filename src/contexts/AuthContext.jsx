@@ -49,9 +49,12 @@ export function AuthContextProvider(props) {
   function logOut() {
     signOut(auth);
   }
-
+  
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
+
+  //date
+  const  today = Math.round(Date.now() / 1000);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -64,7 +67,7 @@ export function AuthContextProvider(props) {
 
 
   return (
-    <AuthContext.Provider value={{ currentUser, signUp, signIn, logOut }}>
+    <AuthContext.Provider value={{ currentUser, signUp, signIn, logOut, today }}>
       {!loadingData && props.children}
     </AuthContext.Provider>
   );

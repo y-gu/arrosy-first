@@ -1,6 +1,5 @@
 import React from 'react';
 import useUserInfo from '../../hooks/useUserInfo';
-import useShowPlants from '../../hooks/useShowPlants';
 import { Link } from "react-router-dom";
 import './ShowPlants.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +10,6 @@ import useShowAll from '../../hooks/useShowAll';
 
 export default function ShowPlants({ handleOpenModal }) {
 
-  //const plants = useShowPlants();
   const plants = useShowAll('gardenCollection')
   const { categories } = useUserInfo();
 

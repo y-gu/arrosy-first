@@ -77,7 +77,6 @@ export default function AddPlant({ setModal, clickedCat }) {
     //const whenToWater =new Date((Timestamp.fromDate(lastWatered).seconds + frequencyRef.current.value * 86400)*1000)
     //const whenToWater = lastWatered + frequencyRef.current.value * 86400
     //const defaultDescription =  typeInfo[0].description 
-
     // const description = descriptionRef.current.value.length <=1 || descriptionRef.current.value == undefined ? typeInfo[0].description  : descriptionRef.current.value
     const newPlantRef = doc(collection(doc(allUsers, auth.currentUser.uid), 'gardenCollection'))
     await setDoc(newPlantRef, { name: nameRef.current.value, type: typeOfPlant, frequency: frequencyRef.current.value, category: categoryOfPlant, imgUrl: imgPlant, potUrl: potUrl, createdAt: serverTimestamp(), lastWatered: lastWatered, waterAllDates: [], description:description });

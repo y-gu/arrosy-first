@@ -1,21 +1,103 @@
 @import "../../../App.scss";
 .dashboard {
-    .title{
-        color: $main-green;
-        text-transform: uppercase;
-        font-weight: 400;
+    .noInfo{
+        position: absolute;
+        top:20%;
+        left:5vw;
+        width: 90vw;
+        height: 30vh;
+        border: 1px double $main-green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $transparent-green;
+        p{
+            max-width: 80%;
+            text-align: center;
+        }
     }
-    .thirsty{
-        background-color: $transparent-red;
+  .title , .noInfo {
+    color: $main-green;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .plant-collection {
+    z-index: 1;
+    position: relative;
+    // height:100%;
+    // width:100%;
+    overflow: hidden;
+    .bigBubble {
+      position: absolute;
+      height: 17rem;
+      width: 17rem;
+      border-radius: 50%;
+      background-color: $transparent-yellow;
+      bottom: -2rem;
+      left: 2rem;
     }
-    .ready{
+    .smallBubble {
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      background-color: $transparent-yellow;
+      right: -2rem;
+    }
+    .card {
+      z-index: 3;
+      position: relative;
+      .watercan {
+        cursor: pointer;
+        height: 28%;
+        position: absolute;
+        bottom: 0.1rem;
+        right: 0.5rem;
+        transform: rotate(45deg);
+      }
+      .hallo{
+        height: 2.5rem;
+        width:2.5rem;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0.2rem;
+        right: 0.6rem;
+      }
+    }
+  }
+  .thirsty {
+    background-color: $transparent-red;
+    .watercan {
+      filter: invert(15%) sepia(62%) saturate(1473%) hue-rotate(312deg)
+        brightness(104%) contrast(96%);
+    }
+    .hallo{
+      background-color: $transparent-red;
+    }
+  }
+  .ready {
+    background-color: $transparent-yellow;
+    .watercan {
+      filter: invert(42%) sepia(8%) saturate(1429%) hue-rotate(136deg)
+        brightness(98%) contrast(90%);
+    }
+    .hallo{
+      background-color: $transparent-yellow;
+    }
+  }
+  .next {
+    background-color: $transparent-green;
+    .watercan {
+        filter: invert(42%) sepia(8%) saturate(1429%) hue-rotate(136deg)
+          brightness(98%) contrast(90%);
+      }
+      .hallo{
         background-color: $transparent-green;
+      }
+  }
+  .done {
+    background-color: $main-green;
+    .watercan {
+        display: none;
     }
-    .next{
-        background-color: $transparent-yellow;
-    }
-    .done{
-        background-color: $main-green;
-    }
-
+  }
 }
