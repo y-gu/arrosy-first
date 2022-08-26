@@ -1,0 +1,41 @@
+@import "../../App.scss";
+
+.plant-group {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1rem 0.2rem;
+}
+.gardenGroup {
+  background-color: $main-yellow;
+  .category-title {
+    position: absolute;
+    color: rgba(77, 116, 119, 0.37);
+    text-transform: capitalize;
+    transform: translateY(-50%);
+  }
+}
+
+.group-title {
+  color: $main-green;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@include tablet {
+  .plant-group {
+    padding: 1.5rem 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    font-size: 1rem;
+    margin-bottom: 4rem;
+  }
+  .gardenGroup {
+    .category-title {
+      font-size: 3rem;
+    }
+  }
+}

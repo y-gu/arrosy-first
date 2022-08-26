@@ -16,7 +16,7 @@
             text-align: center;
         }
     }
-  .title , .noInfo {
+  .group-title , .noInfo {
     color: $main-green;
     text-transform: uppercase;
     font-weight: 400;
@@ -24,8 +24,6 @@
   .plant-collection {
     z-index: 1;
     position: relative;
-    // height:100%;
-    // width:100%;
     overflow: hidden;
     .bigBubble {
       position: absolute;
@@ -51,7 +49,7 @@
         height: 28%;
         position: absolute;
         bottom: 0.1rem;
-        right: 0.5rem;
+        right: 0.3rem;
         transform: rotate(45deg);
       }
       .hallo{
@@ -60,7 +58,7 @@
         border-radius: 50%;
         position: absolute;
         bottom: 0.2rem;
-        right: 0.6rem;
+        right: 0.9rem;
       }
     }
   }
@@ -101,3 +99,10 @@
     }
   }
 }
+@include tablet {
+  .plant-collection{
+
+
+    }
+
+  }

@@ -1,0 +1,64 @@
+@import  "../../App.scss";
+
+
+.card{
+    border: 1px solid white;
+    text-decoration: none;
+    height: 11rem;
+    margin-top: 1.5rem;
+    background: white;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    position: relative;
+    .window{
+       height:40%;
+       width:80%;
+       margin: 1rem auto;
+       background:$transparent-green; 
+       position: relative;
+       .pot, .plant{
+        position: absolute;
+        left:50%;           
+        transform: translateX(-50%);
+       }
+       .pot{
+        height: 70%;
+        bottom: -25%;
+       }
+       .plant{
+        height: 100%;
+        top: -30%;
+
+       }
+    }
+    .title{
+        display: block;
+        color: $main-green;
+        margin-top: 2rem;
+        padding-left: 10%;
+        font-weight: 700;
+        text-transform: capitalize;
+       
+    }
+    .card-bottom{
+        position: absolute;
+        height: 40%;
+        width: 50%;
+        right: 0;
+        bottom:0;
+        display: flex;
+        justify-content: center;
+        img{
+            height: 80%;    
+            text-align: center;
+        }
+    }
+}
+@include tablet {
+
+    .card{
+        height: 15rem;
+        margin-top: 2rem;
+   } 
+
+}

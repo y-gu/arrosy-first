@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   const { today } = useContext(AuthContext);
   return (
-    <div className='dashboard'>
+    <div className='dashboard page'>
 
       {!loading && sortedGroups ? sortedGroups.map((group, i) => {
 
@@ -46,7 +46,7 @@ export default function Dashboard() {
           return (
           <div key={i} className="colorGroup">
 
-              <h2 className='title'>{group.name}</h2>
+              <h2 className='group-title'>{group.name}</h2>
               <div className={`${group.colorClass} plant-collection`}>
                 {
                   group.plants.map((plant, j) => {

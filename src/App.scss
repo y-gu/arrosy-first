@@ -48,7 +48,9 @@ $transparent-yellow: rgba(254, 250, 224, .5);;
   flex-direction: column;
   justify-content: space-between;
   width: 95vw;
-
+  a{
+    text-decoration: none;  
+  }
 
   .page{
     display: flex;

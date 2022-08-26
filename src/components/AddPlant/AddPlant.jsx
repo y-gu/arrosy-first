@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { auth } from "../../firebase/config";
 import { allUsers } from "../../firebase/config";
 import { doc, collection, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
@@ -11,7 +11,7 @@ import useStorage from "../../hooks/useStorage";
 import usePlantTypes from "../../hooks/usePlantTypes";
 import useShowAll from "../../hooks/useShowAll";
 import { getAll } from "../../utils";
-
+import { AuthContext } from "../../contexts/AuthContext";
 export default function AddPlant({ setModal, clickedCat }) {
 
   const [typeOfPlant, setTypeOfPlant] = useState("inconnu");
@@ -22,7 +22,7 @@ export default function AddPlant({ setModal, clickedCat }) {
   const frequencyRef = useRef();
   const lastWaterRef = useRef();
   const descriptionRef= useRef();
-
+  const { today } = useContext(AuthContext);
 
   const plantTypes = usePlantTypes();
   plantTypes.sort((a, b) => {
@@ -71,7 +71,8 @@ export default function AddPlant({ setModal, clickedCat }) {
     e.preventDefault();
 
     //const today = Timestamp.fromDate(new Date());
-    const today = Math.floor(new Date().getTime() / 1000);
+   // const today = Math.floor(new Date().getTime() / 1000);
+    
     //const lastWatered = new Date((today - lastWaterRef.current.value * 86400)*1000);
     const lastWatered = Math.floor(today - lastWaterRef.current.value * 86400)
     //const whenToWater =new Date((Timestamp.fromDate(lastWatered).seconds + frequencyRef.current.value * 86400)*1000)
@@ -79,7 +80,7 @@ export default function AddPlant({ setModal, clickedCat }) {
     //const defaultDescription =  typeInfo[0].description 
     // const description = descriptionRef.current.value.length <=1 || descriptionRef.current.value == undefined ? typeInfo[0].description  : descriptionRef.current.value
     const newPlantRef = doc(collection(doc(allUsers, auth.currentUser.uid), 'gardenCollection'))
-    await setDoc(newPlantRef, { name: nameRef.current.value, type: typeOfPlant, frequency: frequencyRef.current.value, category: categoryOfPlant, imgUrl: imgPlant, potUrl: potUrl, createdAt: serverTimestamp(), lastWatered: lastWatered, waterAllDates: [], description:description });
+    await setDoc(newPlantRef, { name: nameRef.current.value, type: typeOfPlant, frequency: frequencyRef.current.value, frequencyWinter: +frequencyRef.current.value+7, category: categoryOfPlant, imgUrl: imgPlant, potUrl: potUrl, createdAt: serverTimestamp(), lastWatered: lastWatered, waterAllDates: [], description:description });
     formRef.current.reset();
     setDescription('')
   };
