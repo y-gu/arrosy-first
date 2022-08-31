@@ -26,7 +26,7 @@ export default function CardGroup({plants, groupType}) {
         
             {plants.map((plant, i) =>
 
-                <Card plant={plant} type={groupType} key={`${plant.name}-${i}`}/>
+                <Card plant={plant} groupType={groupType} key={`${plant.name}-${i}`}/>
 
             )}
 

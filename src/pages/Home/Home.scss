@@ -25,22 +25,23 @@
     left: -15vw;
     border-radius: 50%;
   }
-  @include tablet {
 
-    img {
-      width: 100%;
-    }
-    p {
-      font-size: 1rem;
-      margin-top: 3rem;
-    }
-    .light {
-      height: 80vh;
-      width: 75vw;
-      top: -15rem;
-      left: -9vw;
-    }
+ 
+}
+@include tablet {
+  .home {
+  img {
+    width: 95%;
   }
-  @include desktop {
+  p {
+    font-size: 1rem;
+    margin-top: 1.5rem;
   }
+  .light {
+    height: 80vh;
+    width: 75vw;
+    top: -15rem;
+    left: -9vw;
+  }
+}
 }

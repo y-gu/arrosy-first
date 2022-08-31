@@ -19,7 +19,7 @@ function Profile() {
       
       <div>Currently logged in as :{currentUser?.uid}</div>
       <CardGroup groupType={'gardenGroup'}  plants={plants}/>
-      <CardGroup groupType={'dashboardGroup'}  plants={plants}/>
+      <CardGroup groupType={'dashboardGroup'}  plants={plants} className="Test"/>
       </div>
     )
 }
